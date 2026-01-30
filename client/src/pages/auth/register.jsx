@@ -1,17 +1,36 @@
 import CommonForm from "@/components/common/form";
 import { registerFormControls } from "@/config";
+import { registerUser } from "@/store/auth-slice";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import {toast} from "sonner"
 
 const initialState = {
-  userName: "",
+  UserName: "",
   email: "",
   password: "",
 };
 
 function AuthRegister() {
   const [formData, setFormData] = useState(initialState);
-  function onSubmit() {}
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+
+  function onSubmit(event) {
+    event.preventDefault();
+    console.log("Form Data before dispatch:", formData);
+    dispatch(registerUser(formData)).then((data) => {
+      if(data?.payload?.success) {
+        toast(
+          "Account Registered",
+          { position: "top-left" }
+        )
+        navigate('/auth/login')}
+    });
+  }
+
 
   return (
     <div className="mx-auto w-full max-w-md space-y-6">
