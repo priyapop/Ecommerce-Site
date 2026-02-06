@@ -4,7 +4,7 @@ import { registerUser } from "@/store/auth-slice";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import {toast} from "sonner"
+import { toast } from "sonner";
 
 const initialState = {
   UserName: "",
@@ -17,20 +17,22 @@ function AuthRegister() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-
   function onSubmit(event) {
     event.preventDefault();
     console.log("Form Data before dispatch:", formData);
     dispatch(registerUser(formData)).then((data) => {
-      if(data?.payload?.success) {
-        toast(
-          "Account Registered",
-          { position: "top-left" }
-        )
-        navigate('/auth/login')}
+      if (data?.payload?.success) {
+        toast(data.payload.message, {
+          position: "top-left",
+        });
+        navigate("/auth/login");
+      } else {
+        toast.warning(data.payload.message, {
+          position: "top-left",
+        });
+      }
     });
   }
-
 
   return (
     <div className="mx-auto w-full max-w-md space-y-6">
