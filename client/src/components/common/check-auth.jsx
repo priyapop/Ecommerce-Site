@@ -21,7 +21,7 @@ console.log(location.pathname,isAuthenticated)
       location.pathname.includes("/register"))
   ) {
     if (user?.role === "admin") {
-      return <Navigate to="/admin/dashbord" />;
+      return <Navigate to="/admin/dashboard" />;
     } else {
       return <Navigate to="/shop/home" />;
     }
@@ -40,7 +40,7 @@ console.log(location.pathname,isAuthenticated)
     user?.role === "admin" &&
     location.pathname.includes("shop")
   ) {
-    return <Navigate to="/admin/dashbord" />;
+    return <Navigate to="/admin/dashboard" />;
   }
   return <>{children}</>;
 }

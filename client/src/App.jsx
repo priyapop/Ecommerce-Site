@@ -55,7 +55,7 @@ console.log(isLoading,user)
             </CheckAuth>
           }
         >
-          <Route path="dashbord" element={<AdminDashbord />} />
+          <Route path="dashboard" element={<AdminDashbord />} />
           <Route path="orders" element={<AdminOrders />} />
           <Route path="features" element={<AdminFeatures />} />
           <Route path="products" element={<AdminProducts />} />
