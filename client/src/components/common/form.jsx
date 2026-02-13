@@ -6,8 +6,10 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-} from "@radix-ui/react-select";
+  SelectValue
+} from "../ui/select";
 import { Textarea } from "../ui/textarea";
+import { Button } from "../ui/button";
 
 function CommonForm({
   formControls,
@@ -110,9 +112,9 @@ function CommonForm({
           </div>
         ))}
       </div>
-      <button type="submit" className="mt-2 w-full">
+      <Button type="submit" className="mt-2 w-full">
         {buttonText || "Submit"}
-      </button>
+      </Button>
     </form>
   );
 }
